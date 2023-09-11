@@ -1,0 +1,28 @@
+#include <Servo.h>
+Servo myservo;
+const int SENSOR_PIN = 7; // the Arduino's input pin that connects to the sensor's SIGNAL pin 
+int pos = 0;
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+  // initialize the Arduino's pin as aninput
+  pinMode(SENSOR_PIN, INPUT);
+  myservo.attach(10);
+
+}
+
+void loop() {
+  // read the state of the the input pin:
+  int state = digitalRead(SENSOR_PIN);
+
+  // print state to Serial Monitor
+  //Serial.println(state);
+  if(state != 0){
+    for(int pos= 0; pos <= 180; pos++){myservo.write(pos);delay(20);}
+    for(pos = 180; pos >= 0; pos--){myservo.write(pos);delay(20);}
+  }
+  else{
+    //for(pos = 180; pos >= 0; pos--){myservo.write(pos);delay(20);}
+    Serial.println(state);
+  }
+}

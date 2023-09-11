@@ -1,0 +1,31 @@
+#include <Servo.h>
+Servo myservo1;
+Servo myservo2;
+
+int newval= 120;
+ void setup(){
+  Serial.begin(9600);
+  myservo1.attach(9);
+  myservo2.attach(10);
+
+ }
+
+
+void loop(){
+  
+int j = 120; int k = 0;
+  for(int i=0;i <=120; i++ ){
+    myservo1.write(i);
+    myservo2.write(j);
+    --j;
+    Serial.print(i);Serial.print(j);
+    delay(50);
+  }
+
+    for(int m=120;m >=0; m-- ){
+    myservo1.write(m);
+    myservo2.write(k);
+    ++k;
+    delay(50);
+  } 
+}
